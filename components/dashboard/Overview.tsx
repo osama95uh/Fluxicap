@@ -49,7 +49,8 @@ export default function Overview({
   const lockdown = activeBatches.filter((batch) => getBatchProgress(batch).isLockdown);
   const hatching = activeBatches.filter((batch) => getBatchProgress(batch).isHatching);
   const feedStock = getFeedStock(data.feedLogs);
-  const lowFeed = feedStock < LOW_FEED_THRESHOLD;
+  const hasFeedLogs = data.feedLogs.length > 0;
+  const lowFeed = hasFeedLogs && feedStock < LOW_FEED_THRESHOLD;
   const usedEggs = activeBatches.reduce((sum, batch) => sum + Number(batch.total_eggs || 0), 0);
 
   const today = new Date().toISOString().slice(0, 10);
@@ -200,7 +201,8 @@ export default function Overview({
 
       <Card className="p-4 sm:p-5 md:p-6">
         <h2 className="flex items-center gap-2 text-sm font-bold tracking-tight text-slate-900">
-          <Zap className="h-4 w-4 text-emerald-600" /> Quick actions
+          <Zap className="h-4 w-4 shrink-0 text-teal-600" />
+          <span>Quick actions</span>
         </h2>
         <div className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
           {quickActions.map((action) => {
@@ -235,7 +237,8 @@ export default function Overview({
         <Card>
           <div className="flex items-center justify-between gap-3 border-b border-slate-100 px-4 py-4 sm:px-5 md:px-6">
             <h2 className="flex items-center gap-2 text-sm font-bold tracking-tight text-slate-900">
-              <Egg className="h-4 w-4 text-emerald-600" /> Recent batches
+              <Egg className="h-4 w-4 shrink-0 text-teal-600" />
+              <span>Recent batches</span>
             </h2>
             <button
               type="button"
@@ -280,7 +283,8 @@ export default function Overview({
         <Card>
           <div className="flex items-center justify-between gap-3 border-b border-slate-100 px-4 py-4 sm:px-5 md:px-6">
             <h2 className="flex items-center gap-2 text-sm font-bold tracking-tight text-slate-900">
-              <Receipt className="h-4 w-4 text-emerald-600" /> Recent activity
+              <Receipt className="h-4 w-4 shrink-0 text-teal-600" />
+              <span>Recent activity</span>
             </h2>
             <button
               type="button"

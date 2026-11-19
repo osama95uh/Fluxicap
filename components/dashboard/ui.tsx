@@ -36,7 +36,7 @@ export function SectionHeader({
     <div className="border-b border-slate-100 px-4 py-4 sm:px-5 md:px-6">
       <div className="flex items-start justify-between gap-3">
         <div className="flex min-w-0 items-start gap-3">
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-50 to-emerald-100/70 text-emerald-700 ring-1 ring-emerald-100">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-50 via-teal-50 to-teal-100/70 text-teal-700 ring-1 ring-teal-100/80">
             <Icon className="h-[21px] w-[21px]" />
           </span>
           <div className="min-w-0">
@@ -91,7 +91,7 @@ export function Modal({
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className="animate-sheet-up relative z-10 flex max-h-[min(90dvh,46rem)] w-full flex-col overflow-hidden rounded-t-[28px] bg-white shadow-[0_-10px_44px_-14px_rgba(15,23,42,0.35)] ring-1 ring-black/5 sm:max-h-[min(86dvh,42rem)] sm:rounded-[24px] sm:shadow-2xl"
+        className="animate-sheet-up relative z-10 flex max-h-[85dvh] w-full flex-col overflow-hidden rounded-t-[28px] bg-white shadow-[0_-10px_44px_-14px_rgba(15,23,42,0.35)] ring-1 ring-black/5 sm:max-h-[min(85dvh,42rem)] sm:rounded-[24px] sm:shadow-2xl"
       >
         <div className="mx-auto mt-2.5 h-1.5 w-10 shrink-0 rounded-full bg-slate-200 sm:hidden" aria-hidden="true" />
         <header className="flex shrink-0 items-start justify-between gap-3 px-5 pb-3 pt-3 sm:px-6 sm:pb-4 sm:pt-5">
@@ -199,9 +199,9 @@ type ButtonVariant = "primary" | "secondary" | "ghost" | "danger" | "amber";
 
 const buttonStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-emerald-600 text-white shadow-sm shadow-emerald-600/25 hover:bg-emerald-700 hover:shadow-md",
+    "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-sm shadow-emerald-600/25 hover:from-emerald-700 hover:to-teal-700 hover:shadow-md",
   secondary:
-    "border border-slate-200 bg-white text-slate-700 shadow-sm shadow-slate-900/[0.03] hover:border-slate-300 hover:bg-slate-50",
+    "border border-slate-200 bg-white text-slate-700 shadow-sm shadow-slate-900/[0.03] hover:border-emerald-200 hover:bg-emerald-50/40 hover:text-emerald-800",
   ghost: "text-slate-600 hover:bg-slate-100",
   danger: "bg-red-600 text-white shadow-sm shadow-red-600/20 hover:bg-red-700",
   amber: "bg-amber-500 text-white shadow-sm shadow-amber-500/25 hover:bg-amber-600",
@@ -300,8 +300,8 @@ export function EmptyState({
   description?: string;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-slate-200 bg-slate-50/50 px-5 py-9 text-center sm:py-11">
-      <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-emerald-600 shadow-sm ring-1 ring-slate-200">
+    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-emerald-200/70 bg-gradient-to-b from-emerald-50/40 to-slate-50/40 px-5 py-9 text-center sm:py-11">
+      <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-teal-600 shadow-sm ring-1 ring-emerald-100">
         <Icon className="h-6 w-6" />
       </span>
       <p className="mt-3 text-sm font-bold text-slate-700">{title}</p>

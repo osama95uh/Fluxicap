@@ -3,9 +3,10 @@
 @layer base {
   :root {
     color-scheme: light;
-    --app-canvas: #f5f7f6;
+    --app-canvas: #f4f7f6;
     --app-ink: #0f172a;
     --app-brand: #047857;
+    --app-safe-bottom: env(safe-area-inset-bottom, 0px);
   }
 
   html {
@@ -16,6 +17,7 @@
   body {
     margin: 0;
     min-height: 100%;
+    overflow-x: hidden;
     background-color: var(--app-canvas);
     color: var(--app-ink);
     font-family:

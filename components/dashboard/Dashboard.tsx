@@ -156,7 +156,7 @@ export default function Dashboard({
 
   return (
     <div className="min-h-screen overflow-x-hidden">
-      <header className="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 px-4 pb-7 pt-[calc(1.25rem+env(safe-area-inset-top))] text-white shadow-[0_10px_30px_-18px_rgba(4,120,87,0.9)] sm:px-6 sm:pb-9 sm:pt-8">
+      <header className="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-teal-700 to-emerald-900 px-4 pb-7 pt-[calc(1.25rem+env(safe-area-inset-top))] text-white shadow-[0_10px_30px_-18px_rgba(4,120,87,0.9)] sm:px-6 sm:pb-9 sm:pt-8">
         <div
           className="pointer-events-none absolute -right-16 -top-24 h-64 w-64 rounded-full bg-emerald-300/10 blur-3xl"
           aria-hidden="true"
@@ -232,7 +232,7 @@ export default function Dashboard({
         </div>
       </nav>
 
-      <main className="mx-auto w-full max-w-6xl space-y-5 overflow-x-hidden px-3 pb-[calc(6rem+env(safe-area-inset-bottom))] pt-5 sm:px-5 sm:pt-7 md:pb-8 lg:space-y-6">
+      <main className="mx-auto w-full max-w-6xl space-y-5 overflow-x-hidden px-3 pb-24 pt-5 sm:px-5 sm:pt-7 md:pb-8 lg:space-y-6">
         {critical ? (
           <div className="animate-fade-in rounded-2xl border border-amber-200/80 bg-gradient-to-br from-amber-50 via-orange-50/80 to-amber-50/60 p-4 shadow-sm ring-1 ring-amber-100 sm:p-5">
             <div className="flex flex-wrap items-start gap-3">
@@ -266,7 +266,8 @@ export default function Dashboard({
                 onClick={() => navigate("incubator")}
                 className="min-h-11 px-3 text-xs"
               >
-                View batch <ChevronRight className="h-4 w-4" />
+                <span>View batch</span>
+                <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
           </div>

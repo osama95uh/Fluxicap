@@ -362,7 +362,8 @@ export default function IncubatorTracker({
                 <div className="mt-3 rounded-2xl border border-slate-200/80 bg-white p-3.5 shadow-sm">
                   <div className="flex items-center justify-between gap-2">
                     <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-slate-500">
-                      <ListChecks className="h-3.5 w-3.5" /> Today&apos;s checks
+                      <ListChecks className="h-3.5 w-3.5 shrink-0" />
+                      <span>Today&apos;s checks</span>
                     </p>
                     <span className="text-[11px] font-semibold text-slate-400 tabular-nums">
                       Day {p.currentDay}

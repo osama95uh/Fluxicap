@@ -88,7 +88,8 @@ export default function FeedInventory({
   }, [formRequest?.nonce]);
 
   const stock = getFeedStock(feedLogs);
-  const lowStock = stock < LOW_FEED_THRESHOLD;
+  const hasLogs = feedLogs.length > 0;
+  const lowStock = hasLogs && stock < LOW_FEED_THRESHOLD;
   const birdCount = getLiveFlockCount(flocks);
   const estimate = getFeedEstimate(feedLogs, birdCount);
 
@@ -181,7 +182,9 @@ export default function FeedInventory({
           subtitle="Purchases, consumption and low-stock alerts"
           action={
             <div className="flex items-center gap-2">
-              {lowStock ? (
+              {!hasLogs ? (
+                <Badge tone="slate">No feed yet</Badge>
+              ) : lowStock ? (
                 <Badge tone="amber">
                   <AlertTriangle className="h-3 w-3" /> Low
                 </Badge>
@@ -197,14 +200,35 @@ export default function FeedInventory({
         />
 
         <div className="p-4 sm:p-5 md:p-6">
-          <div className={`rounded-2xl p-4 shadow-sm sm:p-5 ${lowStock ? "bg-gradient-to-br from-amber-50 to-orange-50/70 ring-1 ring-amber-200" : "bg-gradient-to-br from-emerald-50 to-emerald-100/50 ring-1 ring-emerald-100"}`}>
-            <p className={`text-xs font-bold uppercase tracking-wide ${lowStock ? "text-amber-700" : "text-emerald-700"}`}>
+          <div
+            className={`rounded-2xl p-4 shadow-sm sm:p-5 ${
+              !hasLogs
+                ? "bg-gradient-to-br from-slate-50 to-slate-100/70 ring-1 ring-slate-200"
+                : lowStock
+                  ? "bg-gradient-to-br from-amber-50 to-orange-50/70 ring-1 ring-amber-200"
+                  : "bg-gradient-to-br from-emerald-50 to-teal-100/50 ring-1 ring-emerald-100"
+            }`}
+          >
+            <p
+              className={`text-xs font-bold uppercase tracking-wide ${
+                !hasLogs ? "text-slate-500" : lowStock ? "text-amber-700" : "text-emerald-700"
+              }`}
+            >
               Feed remaining
             </p>
-            <p className={`mt-1 text-3xl font-extrabold tabular-nums ${lowStock ? "text-amber-700" : "text-emerald-800"}`}>
+            <p
+              className={`mt-1 text-3xl font-extrabold tabular-nums ${
+                !hasLogs ? "text-slate-700" : lowStock ? "text-amber-700" : "text-emerald-800"
+              }`}
+            >
               {stock.toLocaleString()} <span className="text-xl font-bold">kg</span>
             </p>
-            {lowStock ? (
+            {!hasLogs ? (
+              <p className="mt-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-500">
+                <Package className="h-3.5 w-3.5" />
+                No feed logged yet — record a purchase to start tracking stock.
+              </p>
+            ) : lowStock ? (
               <p className="mt-1.5 flex items-center gap-1.5 text-xs font-medium text-amber-800">
                 <AlertTriangle className="h-3.5 w-3.5" />
                 Under {LOW_FEED_THRESHOLD} kg — arrange a purchase soon.
@@ -232,7 +256,8 @@ export default function FeedInventory({
             </div>
             <div className="rounded-2xl bg-slate-50/80 p-3.5 ring-1 ring-slate-200/70 sm:p-4">
               <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-slate-400">
-                <Clock3 className="h-3.5 w-3.5" /> Stock days left
+                <Clock3 className="h-3.5 w-3.5 shrink-0" />
+                <span>Stock days left</span>
               </p>
               <p className="mt-1 text-lg font-extrabold text-slate-800 tabular-nums">
                 {estimate.daysLeft === null ? "—" : estimate.daysLeft > 365 ? ">365 days" : `${estimate.daysLeft} days`}
@@ -245,7 +270,8 @@ export default function FeedInventory({
 
           <div className="mt-5 border-t border-slate-100 pt-4">
             <p className="mb-2 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-slate-400">
-              <Package className="h-3.5 w-3.5" /> Recent feed activity
+              <Package className="h-3.5 w-3.5 shrink-0" />
+              <span>Recent feed activity</span>
             </p>
             {feedLogs.length === 0 ? (
               <EmptyState icon={Package} title="No feed logs yet" description="Log a purchase or consumption to see your stock change." />

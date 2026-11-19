@@ -174,13 +174,15 @@ export default function Transactions({
           <div className="grid grid-cols-2 gap-3">
             <div className="rounded-2xl bg-gradient-to-br from-emerald-50 to-emerald-100/60 p-3.5 ring-1 ring-emerald-100 sm:p-4">
               <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-emerald-700">
-                <TrendingUp className="h-3.5 w-3.5" /> Income
+                <TrendingUp className="h-3.5 w-3.5 shrink-0" />
+                <span>Income</span>
               </p>
               <p className="mt-1 text-lg font-extrabold text-emerald-700 tabular-nums">{formatBDT(income)}</p>
             </div>
             <div className="rounded-2xl bg-gradient-to-br from-red-50 to-rose-50 p-3.5 ring-1 ring-red-100 sm:p-4">
               <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-red-600">
-                <TrendingDown className="h-3.5 w-3.5" /> Expense
+                <TrendingDown className="h-3.5 w-3.5 shrink-0" />
+                <span>Expense</span>
               </p>
               <p className="mt-1 text-lg font-extrabold text-red-600 tabular-nums">{formatBDT(expense)}</p>
             </div>
@@ -189,7 +191,8 @@ export default function Transactions({
           <div className="mt-5 rounded-2xl border border-slate-200/70 bg-slate-50/70 p-3.5 shadow-sm sm:p-4">
             <div className="flex items-center justify-between gap-2">
               <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-slate-500">
-                <PieChart className="h-3.5 w-3.5" /> Expense by category
+                <PieChart className="h-3.5 w-3.5 shrink-0" />
+                <span>Expense by category</span>
               </p>
               <span className="text-[11px] font-semibold text-slate-400 tabular-nums">
                 {formatBDT(breakdown.total)} this month
@@ -221,7 +224,8 @@ export default function Transactions({
 
           <div className="mt-5 border-t border-slate-100 pt-4">
             <p className="mb-2 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-slate-400">
-              <Receipt className="h-3.5 w-3.5" /> Recent transactions
+              <Receipt className="h-3.5 w-3.5 shrink-0" />
+              <span>Recent transactions</span>
             </p>
             {transactions.length === 0 ? (
               <EmptyState icon={Receipt} title="No transactions yet" description="Add income or expense entries to see them here." />

@@ -371,7 +371,8 @@ export default function FlockManager({
 
           <div className="border-t border-slate-100 pt-4">
             <p className="mb-2 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-slate-400">
-              <Syringe className="h-3.5 w-3.5" /> Care schedule
+              <Syringe className="h-3.5 w-3.5 shrink-0" />
+              <span>Care schedule</span>
             </p>
             <div className="space-y-3">
               <div>
